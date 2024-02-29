@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .openapp.instance_name }}
+  namespace: openapp
+  labels:
+    "service.openapp.dev/expose-class": {{ .openapp.service_class }}
+    "app.openapp.dev/app-instance": {{ .openapp.instance_name }}
+spec:
+  ports:
+    - port: 5244
+      targetPort: 5244
+  type: LoadBalancer
+  selector:
+    app: {{ .openapp.instance_name }}

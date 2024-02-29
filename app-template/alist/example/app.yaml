@@ -1,0 +1,10 @@
+apiVersion: app.openapp.dev/v1alpha1
+kind: AppInstance
+metadata:
+  name: alist
+  namespace: openapp
+spec:
+  publicServiceClass: "frp4"
+  appTemplate: "alist"
+  inputs: |
+    dataVolume: "/root/openapp/alist"

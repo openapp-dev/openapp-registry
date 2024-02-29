@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .openapp.instance_name }}-config
+  namespace: openapp
+data:
+  initConfig: |
+    serverAddr = "{{ .inputs.serverAddress }}"
+    serverPort = {{ .inputs.serverPort }}
+    webServer.addr = "0.0.0.0"
+    webServer.port = 7400
+    auth.method = "token"
+    auth.token = "{{ .inputs.token }}"

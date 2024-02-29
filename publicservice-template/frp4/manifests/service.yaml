@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .openapp.instance_name }}
+  namespace: openapp
+spec:
+  ports:
+    - port: 7400
+      targetPort: 7400
+  type: NodePort
+  selector:
+    app: {{ .openapp.instance_name }}

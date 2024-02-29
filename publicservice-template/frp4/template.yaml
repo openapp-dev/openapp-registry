@@ -1,0 +1,20 @@
+apiVersion: app.openapp.dev/v1alpha1
+kind: PublicServiceTemplate
+metadata:
+  name: frp4
+spec:
+  title: "frp4"
+  Description: "frp client for 4 layer service expose"
+  exposeTypes:
+  - "Layer4"
+  - "Layer7"
+  inputs: |
+    serverAddress:
+      type: string
+      required: true
+    serverPort:
+      type: string
+      required: true
+    token:
+      type: string
+      required: true

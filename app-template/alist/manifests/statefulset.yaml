@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .openapp.instance_name }}
+  namespace: openapp
+spec:
+  serviceName: {{ .openapp.instance_name }}
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .openapp.instance_name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .openapp.instance_name }}
+    spec:
+      volumes:
+      - name: data
+        hostPath:
+          path: {{ .inputs.dataVolume }}
+          type: DirectoryOrCreate
+      containers:
+      - name: alist
+        image: xhofe/alist-aria2:latest
+        ports:
+        - containerPort: 5244
+          protocol: TCP
+          name: http
+        volumeMounts:
+        - name: data
+          mountPath: /opt/alist/data
+

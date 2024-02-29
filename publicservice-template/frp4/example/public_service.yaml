@@ -1,0 +1,11 @@
+apiVersion: service.openapp.dev/v1alpha1
+kind: PublicServiceInstance
+metadata:
+  name: frp4
+  namespace: openapp
+spec:
+  publicServiceTemplate: frp4
+  inputs: |
+    serverAddress: "127.0.0.1"
+    serverPort: 4443
+    token: "openapp"

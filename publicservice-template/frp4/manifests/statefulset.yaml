@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .openapp.instance_name }}
+  namespace: openapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .openapp.instance_name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .openapp.instance_name }}
+    spec:
+      serviceAccountName: openapp-sa
+      securityContext:
+        runAsUser: 0
+      volumes:
+      - name: frpc-config
+        configMap:
+          name: {{ .openapp.instance_name }}-config
+      containers:
+      - name: frpc
+        image: cesign/frpc:latest
+        volumeMounts:
+        - name: frpc-config
+          mountPath: /openapp/frp/frpc.toml
+          subPath: initConfig
+          ports:
+          - name: http
+            procotol: TCP
+            containerPort: 7400
+      - name: {{ .openapp.instance_name }}
+        image: cesign/frp4-gateway:latest
+        env:
+        - name: SERVICE_CLASS
+          value: "{{ .openapp.instance_name }}"

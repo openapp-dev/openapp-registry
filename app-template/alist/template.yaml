@@ -1,0 +1,17 @@
+apiVersion: app.openapp.dev/v1alpha1
+kind: AppTemplate
+metadata:
+  name: alist
+spec:
+  title: "Alist"
+  Description: "A file list program that supports multiple storage, powered by Gin and Solidjs."
+  Author: "xhofe"
+  icon: ""
+  url: "https://github.com/alist-org/alist"
+  exposeType: "Layer7"
+  inputs: |
+    dataVolume:
+      description: "The volume to store the data."
+      type: string
+      default: "/root/openapp/alist"
+      required: true
