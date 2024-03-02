@@ -22,9 +22,9 @@ spec:
           name: {{ .openapp.instance_name }}-config
       containers:
       - name: frpc
-        image: cesign/frpc:latest
+        image: opennaslab/frpc:latest
         volumeMounts:
-        - name: frpc-config
+        - name: frpc4-manager
           mountPath: /openapp/frp/frpc.toml
           subPath: initConfig
           ports:
@@ -32,7 +32,7 @@ spec:
             procotol: TCP
             containerPort: 7400
       - name: {{ .openapp.instance_name }}
-        image: cesign/frp4-gateway:latest
+        image: opennaslab/frpc4-manager:latest
         env:
         - name: SERVICE_CLASS
           value: "{{ .openapp.instance_name }}"
