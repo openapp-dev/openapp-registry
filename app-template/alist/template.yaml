@@ -4,9 +4,9 @@ metadata:
   name: alist
 spec:
   title: "Alist"
-  Description: "A file list program that supports multiple storage, powered by Gin and Solidjs."
-  Author: "xhofe"
-  icon: ""
+  description: "A file list program that supports multiple storage, powered by Gin and Solidjs."
+  author: "xhofe"
+  icon: "https://raw.githubusercontent.com/alist-org/logo/main/logo.svg"
   url: "https://github.com/alist-org/alist"
   exposeType: "Layer7"
   inputs: |

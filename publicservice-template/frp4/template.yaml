@@ -4,17 +4,26 @@ metadata:
   name: frp4
 spec:
   title: "frp4"
-  Description: "frp client for 4 layer service expose"
+  description: "frp client for 4 layer service expose"
+  author: "fatedier"
+  icon: ""
+  url: "https://github.com/fatedier/frp"
   exposeTypes:
   - "Layer4"
   - "Layer7"
   inputs: |
     serverAddress:
+      description: "The address of the frp server."
       type: string
       required: true
+      default: "127.0.0.1"
     serverPort:
-      type: string
+      description: "The port of the frp server."
+      type: integer
       required: true
+      default: 4443
     token:
+      description: "The token of the frp server."
       type: string
       required: true
+      default: "openapp"
