@@ -24,7 +24,7 @@ spec:
       - name: frpc
         image: opennaslab/frpc:latest
         volumeMounts:
-        - name: frpc4-manager
+        - name: frpc-config
           mountPath: /openapp/frp/frpc.toml
           subPath: initConfig
           ports:
