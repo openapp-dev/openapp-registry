@@ -13,6 +13,11 @@ It clould be the following formats:
     default: 4443
 ```
 
+Demo:
+```yaml
+para_a: 4443
+```
+
 ### string
 ```
 <parameter_name>:
@@ -20,6 +25,12 @@ It clould be the following formats:
     type: string
     required: true
     default: "<default value>"
+```
+
+
+Demo:
+```yaml
+para_a: value_1
 ```
 
 ### boolean
@@ -31,23 +42,57 @@ It clould be the following formats:
     default: "<default value>"
 ```
 
+Demo:
+```yaml
+para_a: false
+```
+
 ### array
 ```
 <parameter_name>:
     description: "<parameter's description>"
     type: array
     required: false
-    itemProperties:
-        <sub_paramater_1>:
-            description: "<parameter's description>"
-            type: int
-            required: false
-            defualt: 0
-        <sub_paramater_2>:
-            description: "<parameter's description>"
-            type: boolean
-            required: false
-            defualt: false
+    items:
+        type: object
+        properties:
+            <sub_paramater_1>:
+                description: "<parameter's description>"
+                type: int
+                required: false
+                defualt: 0
+            <sub_paramater_2>:
+                description: "<parameter's description>"
+                type: boolean
+                required: false
+                defualt: false
+```
+
+Demo:
+```yaml
+para_a:
+- sub_para_1: 1
+  sub_para_2: true
+- sub_para_1: 2
+  sub_para_2: false
+```
+
+Or
+```
+<parameter_name>:
+    description: "<parameter's description>"
+    type: array
+    required: false
+    items:
+        type: integer
+```
+
+Demo:
+```yaml
+para_a:
+- 1
+- 2
+- 3
 ```
 
 ### object
@@ -67,4 +112,11 @@ It clould be the following formats:
             type: boolean
             required: false
             defualt: false
+```
+
+Demo:
+```yaml
+para_a:
+  sub_para_1: 1
+  sub_para_2: true
 ```
