@@ -7,11 +7,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .openapp.instance_name }}
+      publicservice: {{ .openapp.instance_name }}
   template:
     metadata:
       labels:
-        app: {{ .openapp.instance_name }}
+        publicservice: {{ .openapp.instance_name }}
     spec:
       serviceAccountName: openapp-sa
       securityContext:
@@ -31,7 +31,7 @@ spec:
           - name: http
             procotol: TCP
             containerPort: 7400
-      - name: {{ .openapp.instance_name }}
+      - name: frpc4-manager
         image: opennaslab/frpc4-manager:latest
         env:
         - name: SERVICE_CLASS

@@ -9,4 +9,4 @@ spec:
       targetPort: 7400
   type: NodePort
   selector:
-    app: {{ .openapp.instance_name }}
+    publicservice: {{ .openapp.instance_name }}
